@@ -104,9 +104,11 @@ const UserForm = ({ isOpen, onClose, selectedUser, onUserUpdated }) => {
       if (selectedUser) {
         const response = await api.updateUser(selectedUser.id, formData);
         toast.success(response.data.message);
+        resetForm();
       } else {
         const response = await api.createUser(formData);
         toast.success(response.data.message);
+        resetForm();
       }
       onUserUpdated();
       onClose();
